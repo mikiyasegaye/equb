@@ -7,21 +7,21 @@ import ListItemText from "@material-ui/core/ListItemText";
 const ListItem = withStyles({
   root: {
     "&$selected": {
-      backgroundColor: "#A24E9F",
+      backgroundColor: "#23224F",
       color: "white",
       "& .MuiListItemIcon-root": {
         color: "white",
       },
     },
     "&$selected:hover": {
-      backgroundColor: "purple",
+      backgroundColor: "#23223D",
       color: "white",
       "& .MuiListItemIcon-root": {
         color: "white",
       },
     },
     "&:hover": {
-      backgroundColor: "#A784A5",
+      backgroundColor: "#34335A",
       color: "white",
       "& .MuiListItemIcon-root": {
         color: "white",
