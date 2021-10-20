@@ -16,6 +16,10 @@ export default function CreateUser({ setOpenModal, notify, setNotify }) {
   const validateForm = () => {
     let temp = {};
     temp.fullName = userData.fullName ? "" : "This field is Required!";
+    temp.phoneNumber = userData.phoneNumber ? "" : "This field is Required!";
+    temp.subcity = userData.subcity ? "" : "This field is Required!";
+    temp.woreda = userData.woreda ? "" : "This field is Required!";
+    temp.houseNumber = userData.houseNumber ? "" : "This field is Required!";
     setErrors({ ...temp });
     return Object.values(temp).every((x) => x === "");
   };
@@ -59,6 +63,46 @@ export default function CreateUser({ setOpenModal, notify, setNotify }) {
               onChange={handleChange}
               fullWidth
               error={errors.fullName}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.Input
+              label="Phone Number"
+              name="phoneNumber"
+              value={userData.phoneNumber}
+              onChange={handleChange}
+              fullWidth
+              error={errors.phoneNumber}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.Input
+              label="Subcity"
+              name="subcity"
+              value={userData.subcity}
+              onChange={handleChange}
+              fullWidth
+              error={errors.subcity}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.Input
+              label="Woreda"
+              name="woreda"
+              value={userData.woreda}
+              onChange={handleChange}
+              fullWidth
+              error={errors.woreda}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.Input
+              label="House Number"
+              name="houseNumber"
+              value={userData.houseNumber}
+              onChange={handleChange}
+              fullWidth
+              error={errors.houseNumber}
             />
           </Grid>
           <Grid item xs={6} />
