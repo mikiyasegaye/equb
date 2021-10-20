@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
 import Header from "./Header";
 import SideBar from "./SideBar";
 
@@ -21,6 +22,7 @@ export default function Layout({ children }) {
       <Header />
       <SideBar />
       <div className={classes.page}>{children}</div>
+      <CssBaseline />
     </>
   );
 }

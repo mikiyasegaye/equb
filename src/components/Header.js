@@ -10,6 +10,7 @@ import {
 import { withStyles } from "@material-ui/styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const style = {
   appbar: {
@@ -23,7 +24,7 @@ const style = {
   },
 };
 
-const Header = ({classes}) => {
+const Header = ({ classes }) => {
   return (
     <AppBar className={classes.appbar} position="fixed">
       <Toolbar>
@@ -41,7 +42,7 @@ const Header = ({classes}) => {
               </Badge>
             </IconButton>
             <IconButton color="inherit">
-              <AccountCircleIcon />
+              <LogoutIcon />
             </IconButton>
           </Grid>
         </Grid>
