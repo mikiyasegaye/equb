@@ -7,7 +7,6 @@ import {
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "../components/theme";
-import Login from "../components/Login";
 import Dashboard from "../pages/dashboard";
 import Users from "../pages/users";
 
@@ -16,10 +15,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/users" component={Users} />
-          <Redirect exact from="/" to="/login" />
+          <Redirect exact from="/" to="/dashboard" />
         </Switch>
       </Router>
       <CssBaseline />
