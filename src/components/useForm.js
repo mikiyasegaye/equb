@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core";
 export function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
   const [userData, setUserData] = useState(initialValues);
-  const [idValue, setIdValue] = useState([]);
-  const [selected, setSelected] = useState([]);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
