@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
+import AddIcon from "@mui/icons-material/Add";
 import Controls from "../controls/Controls";
 import { useForm, Form } from "../useForm";
-import { createAPIEndpoint, ENDPOINTS } from "../../api";
+import { postJsonData } from "../../api";
 
+const maritalStatusOptions = [
+  { id: "single", title: "Single" },
+  { id: "Married", title: "Married" },
+];
 const initialValues = {
   fullName: "",
+  phoneNumber: "",
+  subcity: "",
+  woreda: "",
+  houseNumber: "",
+  maritalStatus: "",
 };
 
 export default function CreateUser({ setOpenModal, notify, setNotify }) {
@@ -20,34 +30,35 @@ export default function CreateUser({ setOpenModal, notify, setNotify }) {
     temp.subcity = userData.subcity ? "" : "This field is Required!";
     temp.woreda = userData.woreda ? "" : "This field is Required!";
     temp.houseNumber = userData.houseNumber ? "" : "This field is Required!";
+    temp.maritalStatus = userData.maritalStatus
+      ? ""
+      : "This field is Required!";
     setErrors({ ...temp });
     return Object.values(temp).every((x) => x === "");
   };
 
-  const createUser = (e) => {
+  const createUser = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      createAPIEndpoint(ENDPOINTS.USER)
-        .create(userData)
-        .then((res) => {
-          setNotify({
-            isOpen: true,
-            title: "User Success",
-            message: "User Created Successfully!",
-            type: "success",
-          });
-        })
-        .catch((err) => {
-          setNotify({
-            isOpen: true,
-            title: "User Error",
-            message: "Can't Create User!",
-            type: "error",
-          });
-          console.log("create_user_error", err); //TODO: remove this line
+      var data = await postJsonData({ body: userData });
+      if (data.message === "success") {
+        setNotify({
+          isOpen: true,
+          title: "User Success",
+          message: "User Registered Successfully!",
+          type: "success",
         });
-
-      setOpenModal(false);
+        setOpenModal(false);
+      } else if (data.message === "error") {
+        console.log("body_data: ", data);
+        setNotify({
+          isOpen: true,
+          title: "User Error",
+          message: "Can't Register User!",
+          type: "error",
+        });
+        setOpenModal(false);
+      }
     }
   };
 
@@ -105,14 +116,26 @@ export default function CreateUser({ setOpenModal, notify, setNotify }) {
               error={errors.houseNumber}
             />
           </Grid>
+          <Grid item xs={6}>
+            <Controls.Select
+              label="Marital Status"
+              name="maritalStatus"
+              value={userData.maritalStatus}
+              onChange={handleChange}
+              id="maritalStatus"
+              options={maritalStatusOptions}
+              error={errors.maritalStatus}
+            />
+          </Grid>
           <Grid item xs={6} />
           <Grid item xs={6}>
             <Controls.Button
               variant="contained"
               color="primary"
               size="large"
-              text="SUBMIT"
+              text="REGISTER"
               type="submit"
+              startIcon={<AddIcon />}
             />
           </Grid>
         </Grid>

@@ -5,7 +5,7 @@ import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
-import Controls from "./controls/Controls";
+import Controls from "../components/controls/Controls";
 
 const useStyles = makeStyles((theme) => ({
   root: {

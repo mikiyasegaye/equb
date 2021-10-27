@@ -1,19 +1,13 @@
 import axios from "axios";
+import fs from "fs";
+import path from "path";
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
-axios.defaults.headers.common["Authorization"] =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiZDkzOWI3ZjQtZWI1NS00NWI0LTg3NmMtZWJjOTNlY2Y5ZjUyIiwiZnVsbE5hbWUiOiJzeXN0ZW0gYWRtaW4iLCJ1c2VyTmFtZSI6InN5c3RlbWFkbWluIiwicm9sZSI6eyJpZCI6InN5c3RlbSIsInJvbGVOYW1lIjoic3lzdGVtIGFkbWluIn19LCJpYXQiOjE2MzQyMTg2NTksImV4cCI6MTYzNDIyNTg1OX0.h7HgDB_AiIxGUeAz9kww433HxWM1_y5Wr9nLLZN4D1c";
+axios.defaults.headers.common["Authorization"] = "";
 
-const BASE_URL = "http://localhost:3051/api/";
+const BASE_URL = "http://localhost:2022/api/";
 
-// let t_id = localStorage.getItem("task_id");
-
-export const ENDPOINTS = {
-  TASK: "task",
-  // SUBTASK: `task/${t_id}/subtask`,
-  ROLE: "role",
-  USER: "user",
-};
+export const ENDPOINTS = {};
 
 export const createAPIEndpoint = (endpoint) => {
   let url = BASE_URL + endpoint + "/";
@@ -44,4 +38,32 @@ const getData = async (url) => {
   return data.data;
 };
 
-export { postData, getData };
+const postJsonData = async ({ body }) => {
+  console.log("body: ", body);
+  const preventError = (error) => {
+    if (error) {
+      return;
+    }
+  };
+  try {
+    // const data = await fs.writeFileSync(
+    //   path.resolve(__dirname, "jsonData.json"),
+    //   JSON.stringify(body)
+    // );
+    const data = JSON.stringify(body, null, 2);
+    fs.write("jsonData", data, preventError);
+    return { message: "success", data: data };
+  } catch (error) {
+    return {
+      message: "error",
+      data: error,
+    };
+  }
+};
+
+const getJsonData = async (url) => {
+  const data = await axios.get(`${BASE_URL}/${url}`);
+  return data.data;
+};
+
+export { postData, getData, postJsonData, getJsonData };
