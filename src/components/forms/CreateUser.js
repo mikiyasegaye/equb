@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
 import Controls from "../controls/Controls";
 import { useForm, Form } from "../useForm";
-import { postJsonData } from "../../api";
+import { postData } from "../../api";
 
 const maritalStatusOptions = [
   { id: "single", title: "Single" },
@@ -40,7 +40,7 @@ export default function CreateUser({ setOpenModal, notify, setNotify }) {
   const createUser = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      var data = await postJsonData({ body: userData });
+      var data = await postData({ body: userData });
       if (data.message === "success") {
         setNotify({
           isOpen: true,

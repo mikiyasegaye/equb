@@ -1,9 +1,11 @@
 import * as React from "react";
+import { version } from "../../package.json";
 import Avatar from "@material-ui/core/Avatar";
 import FormControl from "@material-ui/core/FormControl";
 import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/styles";
 import Controls from "../components/controls/Controls";
 
@@ -31,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     marginTop: "15px",
+  },
+  footer: {
+    position: "fixed",
+    bottom: 0,
+    padding: 10,
+    textAlign: "center",
   },
 }));
 
@@ -63,6 +71,14 @@ const Login = (props) => {
             fullWidth
           />
         </form>
+        <div className={classes.footer}>
+          <Divider />
+          <Typography>
+            Powered By: Mikiyas T. (mikiyasegaye@gmail.com)
+          </Typography>
+          <Typography>Version: {version}</Typography>
+          <Divider />
+        </div>
       </Paper>
     </main>
   );

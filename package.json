@@ -17,6 +17,7 @@
     "@types/date-fns": "^2.6.0",
     "axios": "^0.21.4",
     "date-fns": "^2.25.0",
+    "jwt-decode": "^3.1.2",
     "material-table": "^1.69.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -27,7 +28,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

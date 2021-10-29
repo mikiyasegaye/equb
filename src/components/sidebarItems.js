@@ -5,16 +5,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import Controls from "../components/controls/Controls";
 
-export const accountListsItems = (
-  <div>
-    <Controls.SideListItem to="" primary="Account">
-      <ListItemIcon style={{ color: "white" }}>
-        <AccountCircleIcon />
-      </ListItemIcon>
-    </Controls.SideListItem>
-  </div>
-);
-
 export const mainListItems = (
   <div>
     <Controls.SideListItem to="/dashboard" primary="Dashboard">

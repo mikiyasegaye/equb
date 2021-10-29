@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
+import Controls from "../components/controls/Controls";
 
-import { accountListsItems, mainListItems } from "../components/sidebarItems";
+import { mainListItems } from "../components/sidebarItems";
 
 const drawerWidth = 240;
 
@@ -36,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBar() {
   const classes = useStyles();
+  const [loggedInUser, setLoggedInUser] = useState();
+
+  useEffect(() => {
+    // let decoded = jwt_decode(localStorage.getItem("tokenData"));
+    // setLoggedInUser(decoded);
+    setLoggedInUser("SYSTEM ADMIN");
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -48,7 +59,13 @@ export default function SideBar() {
         }}
       >
         <Divider />
-        <List>{accountListsItems}</List>
+        <List>
+          <Controls.SideListItem to="" primary={loggedInUser}>
+            <ListItemIcon style={{ color: "white" }}>
+              <AccountCircleIcon />
+            </ListItemIcon>
+          </Controls.SideListItem>
+        </List>
         <Divider />
         <List>{mainListItems}</List>
         <Divider />

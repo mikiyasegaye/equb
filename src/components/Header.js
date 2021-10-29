@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   AppBar,
   Badge,
@@ -8,9 +9,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { logoutUser } from "../api";
 
 const style = {
   appbar: {
@@ -25,6 +26,11 @@ const style = {
 };
 
 const Header = ({ classes }) => {
+  const history = useHistory();
+  const handleLogoutClick = () => {
+    logoutUser();
+    history.push("/login");
+  };
   return (
     <AppBar className={classes.appbar} position="fixed">
       <Toolbar>
@@ -41,7 +47,7 @@ const Header = ({ classes }) => {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" onClick={handleLogoutClick}>
               <LogoutIcon />
             </IconButton>
           </Grid>

@@ -38,32 +38,8 @@ const getData = async (url) => {
   return data.data;
 };
 
-const postJsonData = async ({ body }) => {
-  console.log("body: ", body);
-  const preventError = (error) => {
-    if (error) {
-      return;
-    }
-  };
-  try {
-    // const data = await fs.writeFileSync(
-    //   path.resolve(__dirname, "jsonData.json"),
-    //   JSON.stringify(body)
-    // );
-    const data = JSON.stringify(body, null, 2);
-    fs.write("jsonData", data, preventError);
-    return { message: "success", data: data };
-  } catch (error) {
-    return {
-      message: "error",
-      data: error,
-    };
-  }
+const logoutUser = () => {
+  localStorage.removeItem("tokenData");
 };
 
-const getJsonData = async (url) => {
-  const data = await axios.get(`${BASE_URL}/${url}`);
-  return data.data;
-};
-
-export { postData, getData, postJsonData, getJsonData };
+export { postData, getData, logoutUser };
