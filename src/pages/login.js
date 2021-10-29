@@ -37,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     position: "fixed",
     bottom: 0,
-    padding: 10,
-    textAlign: "center",
+    right: 0,
+    padding: 25,
+    textAlign: "right",
   },
 }));
 
