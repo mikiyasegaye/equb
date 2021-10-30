@@ -2,6 +2,7 @@ import * as React from "react";
 import { version } from "../../package.json";
 import Avatar from "@material-ui/core/Avatar";
 import FormControl from "@material-ui/core/FormControl";
+import { Alert } from "@mui/material";
 import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
   },
   paper: {
-    marginTop: theme.spacing.unit * 20,
+    marginTop: theme.spacing(20),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -29,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing.unit,
-  },
-  submit: {
-    marginTop: "15px",
+    marginTop: theme.spacing(),
   },
   footer: {
     position: "fixed",
@@ -57,13 +55,18 @@ const Login = (props) => {
 
   return (
     <main className={classes.root}>
-      <Paper className={classes.paper}>
+      <Paper elevation={10} className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <div>
+          {/* {loginData.errorMsg ? (
+            <Alert severity="error">{loginData.errorMsg}</Alert>
+          ) : null} */}
+        </div>
         <form className={classes.form}>
           <FormControl margin="normal" fullWidth>
             <Controls.Input label="username" name="Username" autoFocus />
@@ -71,22 +74,20 @@ const Login = (props) => {
           <FormControl margin="normal" fullWidth>
             <Controls.Input label="Password" name="Password" type="password" />
           </FormControl>
-          <Controls.Button
-            variant="contained"
-            color="primary"
-            size="large"
-            text="SIGN IN"
-            type="submit"
-            className={classes.submit}
-            fullWidth
-          />
+          <FormControl margin="normal" fullWidth>
+            <Controls.Button
+              variant="contained"
+              color="primary"
+              size="large"
+              text="SIGN IN"
+              type="submit"
+            />
+          </FormControl>
         </form>
         <div className={classes.footer}>
           <Divider className={classes.dividerTop} />
-          <Typography>
-            Powered By: Mikiyas T. (mikiyasegaye@gmail.com)
-          </Typography>
-          <Typography>Version: {version}, 2021</Typography>
+          <Typography variant="h4">Equb App</Typography>
+          <Typography variant="h6">Version: {version}, 2021</Typography>
           <Divider className={classes.dividerBottom} />
         </div>
       </Paper>

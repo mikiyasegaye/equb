@@ -36,6 +36,7 @@ export default function Layout({ children }) {
       <CssBaseline />
       <div className={classes.footer}>
         <Divider />
+        <Typography>Equb App</Typography>
         <Typography>Version: {version}, 2021</Typography>
         <Divider />
       </div>

@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
-import { makeStyles } from "@material-ui/core/styles";
-import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+// import { makeStyles } from "@material-ui/core/styles";
 import BlockIcon from "@mui/icons-material/Block";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { createAPIEndpoint, ENDPOINTS } from "../../api";
 import Controls from "../controls/Controls";
 import Modal from "../Modal";
 
-const useStyles = makeStyles({});
+// const useStyles = makeStyles({});
 
 export default function UsersList({ notify, setNotify, idValue, setIdValue }) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Modal(props) {
   const classes = useStyles();
-  const { title, children, openModal, setOpenModal, notify, setNotify } = props;
+  const { title, children, openModal, setOpenModal } = props;
 
   return (
     <Dialog

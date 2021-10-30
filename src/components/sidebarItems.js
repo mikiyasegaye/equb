@@ -1,7 +1,6 @@
 import React from "react";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import Controls from "../components/controls/Controls";
 

@@ -6,7 +6,6 @@ import Modal from "../components/Modal";
 import Notification from "../components/Notification";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
-import AddCircleIcon from "@mui/icons-material/Add";
 import UsersList from "../components/tables/UsersList";
 import CreateUser from "../components/forms/CreateUser";
 
