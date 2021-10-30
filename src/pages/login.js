@@ -36,10 +36,19 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     position: "fixed",
+    width: "100%",
     bottom: 0,
     right: 0,
     padding: 25,
     textAlign: "right",
+  },
+  dividerTop: {
+    background: "#23224F",
+    height: 5,
+  },
+  dividerBottom: {
+    background: "#23224F",
+    height: 10,
   },
 }));
 
@@ -73,12 +82,12 @@ const Login = (props) => {
           />
         </form>
         <div className={classes.footer}>
-          <Divider />
+          <Divider className={classes.dividerTop} />
           <Typography>
             Powered By: Mikiyas T. (mikiyasegaye@gmail.com)
           </Typography>
-          <Typography>Version: {version}</Typography>
-          <Divider />
+          <Typography>Version: {version}, 2021</Typography>
+          <Divider className={classes.dividerBottom} />
         </div>
       </Paper>
     </main>
