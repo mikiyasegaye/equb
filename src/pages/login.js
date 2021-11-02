@@ -2,7 +2,7 @@ import * as React from "react";
 import { version } from "../../package.json";
 import Avatar from "@material-ui/core/Avatar";
 import FormControl from "@material-ui/core/FormControl";
-import { Alert } from "@mui/material";
+// import { Alert } from "@mui/material";
 import LockIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
   },
   paper: {
-    marginTop: theme.spacing(20),
+    marginTop: 100,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: "10px",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "#23224F",
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(),
+    marginTop: 10,
   },
   footer: {
     position: "fixed",

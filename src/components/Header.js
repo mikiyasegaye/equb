@@ -7,7 +7,7 @@ import {
   IconButton,
   Toolbar,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { withStyles } from "@material-ui/styles";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LogoutIcon from "@mui/icons-material/Logout";
