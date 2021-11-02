@@ -3,11 +3,18 @@ import { makeStyles } from "@material-ui/core";
 
 export function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
-  const [userData, setUserData] = useState(initialValues);
+  const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [openModal, setOpenModal] = useState(false);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "",
+  });
 
   const handleChange = (e) => {
-    setUserData((values) => {
+    setFormData((values) => {
       return {
         ...values,
         [e.target.name]: e.target.value,
@@ -23,8 +30,12 @@ export function useForm(initialValues) {
   return {
     values,
     setValues,
-    userData,
-    setUserData,
+    formData,
+    setFormData,
+    openModal,
+    setOpenModal,
+    notify,
+    setNotify,
     errors,
     setErrors,
     handleChange,

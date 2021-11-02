@@ -23,9 +23,6 @@ const useStyles = makeStyles((theme) =>
     formControl: {
       float: "right",
     },
-    button: {
-      color: theme.palette.primary.main,
-    },
   })
 );
 
@@ -49,7 +46,6 @@ export default function Users() {
               text="CREATE USER"
               variant="contained"
               onClick={() => setOpenModal(true)}
-              className={classes.button}
             />
           </div>
           <br />

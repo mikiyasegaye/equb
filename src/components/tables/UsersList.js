@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import MaterialTable from "material-table";
+import AddIcon from "@mui/icons-material/Add";
 // import { makeStyles } from "@material-ui/core/styles";
-import BlockIcon from "@mui/icons-material/Block";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { createAPIEndpoint, ENDPOINTS } from "../../api";
 import Controls from "../controls/Controls";
 import Modal from "../Modal";
 
 // const useStyles = makeStyles({});
 
-export default function UsersList({ notify, setNotify, idValue, setIdValue }) {
+export default function UsersList({
+  formData,
+  setFormData,
+  notify,
+  setNotify,
+  idValue,
+  setIdValue,
+}) {
   // const classes = useStyles();
-  const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
@@ -23,7 +28,7 @@ export default function UsersList({ notify, setNotify, idValue, setIdValue }) {
     setIsLoading(true);
     var result = await createAPIEndpoint(ENDPOINTS.USER).fetchAll();
     let users = result.data.result;
-    setUserData(users);
+    setFormData(users);
     setIsLoading(false);
   };
 
@@ -43,35 +48,42 @@ export default function UsersList({ notify, setNotify, idValue, setIdValue }) {
             field: "fullName",
           },
           {
-            title: "Created By",
-            field: "createdBy.fullName",
+            title: "Phone Number",
+            field: "phoneNumber",
           },
           {
-            title: "Activate/Deactivate",
-            filed: "activationStatus",
+            title: "Subcity",
+            field: "subcity",
+          },
+          {
+            title: "Woreda",
+            field: "woreda",
+          },
+          {
+            title: "House Number",
+            field: "houseNumber",
+          },
+          {
+            title: "Marital Status",
+            field: "maritalStatus",
+          },
+          {
+            title: "Add to Equb",
+            filed: "id",
 
-            render: (rowData) => {
-              rowData.activationStatus ? (
-                <div>
-                  <Controls.Button
-                    text="Deactivate"
-                    endIcon={<BlockIcon />}
-                    onClick={(e) => handleClick(e, rowData.id)}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <Controls.Button
-                    text="Activate"
-                    endIcon={<CheckCircleIcon />}
-                    onClick={(e) => handleClick(e, rowData.id)}
-                  />
-                </div>
-              );
-            },
+            render: (rowData) => (
+              <div>
+                <Controls.Button
+                  text="ADD"
+                  size="small"
+                  startIcon={<AddIcon />}
+                  onClick={(e) => handleClick(e, rowData.id)}
+                />
+              </div>
+            ),
           },
         ]}
-        data={userData}
+        data={formData}
         options={{
           headerStyle: {
             backgroundColor: "#23224F",
@@ -84,7 +96,7 @@ export default function UsersList({ notify, setNotify, idValue, setIdValue }) {
         isLoading={isLoading}
       />
       <Modal
-        title="RESET PASSWORD"
+        title="ADD USER TO EQUB"
         openModal={openModal}
         setOpenModal={setOpenModal}
         notify={notify}
